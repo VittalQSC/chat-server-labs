@@ -28,9 +28,10 @@ function placeMessage(msg) {
 }
 
 window.state = {
+	// http://127.0.0.1:999/chat?token=
 	messages: [],
 	user: "username-" + uniqueId(),
-	mainUrl : 'http://192.168.0.101:999/chat',
+	mainUrl : 'http://127.0.0.1:999/chat',
 	token : 'TE11EN'
 };
 
