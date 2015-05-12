@@ -59,12 +59,14 @@ function ajax(method, url, data, success, error) {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState == 4) {
 			if (200 <= xhr.status && xhr.status < 300) {
+				connectToServer();
 				var data;
 				if (xhr.responseText.length > 0) {
 					data = JSON.parse(xhr.responseText);
 				}
 				success(data)
 			} else {
+				disconnectToServer();
 				//error
 			}
 		}
@@ -220,6 +222,18 @@ function refreshUsername() {
 function setFirstUsernameInInput() {
 	var input = document.getElementById("username");
 	input.value = state.user;
+}
+
+function connectToServer(){
+	var status = document.getElementById("server-status");
+	status.classList.remove("label-danger");
+	status.classList.add("label-success");
+}
+
+function disconnectToServer(){
+	var status = document.getElementById("server-status");
+	status.classList.remove("label-success");
+	status.classList.add("label-danger");
 }
 
 function run() {
